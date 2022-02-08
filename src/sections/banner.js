@@ -2,7 +2,9 @@
 import { jsx } from 'theme-ui';
 import { Container, Flex, Box, Heading, Text, Image, Button } from 'theme-ui';
 import React, { useState } from 'react';
-import ModalVideo from 'react-modal-video';
+import dynamic from 'next/dynamic';
+
+const ModalVideo = dynamic(() => import('react-modal-video'), { ssr: false });
 import { Link } from 'components/link';
 import { FaPlayCircle } from 'react-icons/fa';
 import BannerBG from 'assets/bannerBg.png';
@@ -40,33 +42,32 @@ export default function Banner() {
     setVideoOpen(true);
   };
   return (
-    <section sx={styles.banner} id="home">
+    <section sx={styles.banner} id='home'>
       <Container sx={styles.banner.container}>
         <Box sx={styles.banner.contentBox}>
-          <Heading as="h1" variant="heroPrimary">
+          <Heading as='h1' variant='heroPrimary'>
             Experience your ultimate mobile application
           </Heading>
-          <Text as="p" variant="heroSecondary">
+          <Text as='p' variant='heroSecondary'>
             Get your blood tests delivered at let home collect sample from the
             victory of the managements that supplies best design system
             guidelines ever.
           </Text>
           <Flex>
-            <Button variant="whiteButton" aria-label="Get Started">
+            <Button variant='whiteButton' aria-label='Get Started'>
               Get Started
             </Button>
             <>
               <ModalVideo
-                channel="youtube"
+                channel='youtube'
                 isOpen={videoOpen}
-                videoId="ZNA9rmDsYVE"
+                videoId='ZNA9rmDsYVE'
                 onClose={() => setVideoOpen(false)}
               />
               <Button
-                variant="textButton"
-                aria-label="Watch Video"
-                onClick={handleClick}
-              >
+                variant='textButton'
+                aria-label='Watch Video'
+                onClick={handleClick}>
                 <FaPlayCircle /> Watch Video
               </Button>
             </>
@@ -84,7 +85,7 @@ export default function Banner() {
         </Box>
 
         <Box sx={styles.banner.imageBox}>
-          <Image src={BannerThumb} alt="banner" />
+          <Image src={BannerThumb} alt='banner' />
         </Box>
       </Container>
     </section>
